@@ -11,7 +11,7 @@ var port             =  process.env.PORT || 3600;
 var router           =  express.Router(); 
 var serveStatic      =  require('serve-static');
 const helmet         =  require('helmet')
-const EasySoap       =  require('easysoap');
+
 
 /***************************************************/
 

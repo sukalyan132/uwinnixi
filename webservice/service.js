@@ -3,7 +3,8 @@ var fs              =   require('fs');
 var mysql           =   require('mysql');
 var http            = require("http");
 var redis           = require('redis');
-var client          = redis.createClient('6379','http://10.0.0.6'); // this creates a new client
+var ip              = "10.0.0.6";
+var client          = redis.createClient(6379,ip); // this creates a new client
 
 /**************************************************/
 /********************** redis connection*********************************/
@@ -26,10 +27,10 @@ var pool  = mysql.createPool({
     password: 'root',
     database: 'tutorial_database'
 });*/
-con.connect(function(err) {
+/*con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-});
+});*/
 /************************** add query ************************/
 /*function addRow(data) {
     let insertQuery = 'INSERT INTO ?? (??,??) VALUES (?,?)';

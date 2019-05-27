@@ -4,8 +4,8 @@ var mysql           =   require('mysql');
 var http            =   require("http");
 var redis           =   require('redis');
 var ip              =   "10.0.0.6";
-//var client          = redis.createClient(6379,ip); // this creates a new client
-var client          =   redis.createClient(); // this creates a new client
+var client          = redis.createClient(6379,ip); // this creates a new client
+//var client          =   redis.createClient(); // this creates a new client
 var request         =   require('request');
 var async           =   require('async');
 

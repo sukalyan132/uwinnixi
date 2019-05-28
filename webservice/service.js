@@ -114,10 +114,57 @@ module.exports = function (app) {
       res.json(req.body);
     
    })
+   /************************* validate otp **************************/
+   app.post('/api/validateOtpForUwinCreation',function(req,res){
+      if(req.body.otp=='1234' && req.body.aadharNo=='AAA123YT7777')
+      {
+        var response={
+              "status"          : "success",
+              "aadharNo"        : "**** **** **** 7777",
+              "fname"           : "UserFirstName",
+              "lname"           : "UserLastName",
+              "dob"             : "02/09/1999",
+              "mobileNo"        : "8888888888",
+              "token"           : "12345678"
+            };
+        res.status(200).json(response);
+      }
+      else
+      {
+          var response={
+                "status" : "failed",
+                "message": "sorry no data avlable."
+              };
+          res.status(202).json(response);
+      }
+   })
+   /*************************** save uwin data for user *******************/
+   app.post('/api/saveUwinUserData',function(req,res){
+      if(req.body.token=='12345678')
+      {
+        var response={
+              "status"          : "success",
+              "aadharNo"        : "**** **** **** 7777",
+              "fname"           : "UserFirstName",
+              "lname"           : "UserLastName",
+              "dob"             : "02/09/1999",
+              "mobileNo"        : "8888888888"
+            };
+        res.status(200).json(response);
+      }
+      else
+      {
+          var response={
+                "status" : "failed",
+                "message": "sorry  data not saved."
+              };
+          res.status(202).json(response);
+      }
+   })
    /***************************auth service *****************************/
-   app.post('/api/otpAuthService',function(req,res){
+   app.post('/api/requestForOtp',function(req,res){
       //client.get('123', (err, photos) => {console.log(JSON.parse(photos));})
-      async.waterfall([
+      /*async.waterfall([
           function (callback) {
               console.log('First Step --> ');
               callback(null, '1', '2');
@@ -133,8 +180,23 @@ module.exports = function (app) {
       ], function (err, result) {
           console.log('Main Callback --> ' + result);
           res.json(req.body);
-      });
+      });*/
+      if(req.body.aadharNo=='AAA123YT7777')
+      {
+        var response={
+              "status" : "success",
+              "message": "Otp send to your mobile no."
+            };
+      }
+      else
+      {
+        var response={
+                "status" : "failed",
+                "message": "Otp not send."
+              };
+      }
       
+      res.json(response);
     
    })
    /************************** print uwin details otp verification ********************/
